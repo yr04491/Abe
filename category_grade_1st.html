@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>ぼくらのみち — 小学生カテゴリ</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<body>
+<div id="common-header"></div>
+
+<main class="container">
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <ol>
+      <li><a href="index.html">ホーム</a></li>
+      <li class="active" aria-current="page">学年別: 小学1年生</li>
+    </ol>
+  </nav>
+
+  <div class="search-form">
+    <input type="text" class="search-input" placeholder="キーワードで検索">
+    <button type="submit" class="search-button">検索</button>
+  </div>
+  
+  <div class="category-header">
+    <h1 class="page-title">小学1年生の不登校体験談</h1>
+    <p class="category-description">このカテゴリでは小学1年生から不登校になった体験談を掲載しています。同じような経験をされた方々の声をお届けします。</p>
+    
+    <div class="category-filters">
+      <div class="filter-group">
+        <label>並び順:</label>
+        <select id="sort-select">
+          <option value="new" selected>新着順</option>
+          <option value="old">古い順</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label>状況:</label>
+        <div class="filter-tags">
+          <span class="filter-tag active" data-filter="all">すべて</span>
+          <span class="filter-tag" data-filter="initial">初期</span>
+          <span class="filter-tag" data-filter="half-year">半年程度</span>
+          <span class="filter-tag" data-filter="improving">改善事例</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="story-list">
+    <!-- ここに記事一覧がJSで挿入されます -->
+  </div>
+  
+  <div class="pagination">
+    <a href="#" class="prev-page">&lt; 前のページ</a>
+    <span class="page-numbers">
+      <span class="current-page">1</span> / <span class="total-pages">1</span>
+    </span>
+    <a href="#" class="next-page">次のページ &gt;</a>
+  </div>
+  
+  <script>
+    // ページロード時に記事一覧を表示
+    document.addEventListener('DOMContentLoaded', function() {
+      // URLパラメータを取得
+      const urlParams = new URLSearchParams(window.location.search);
+      const gradeFilter = urlParams.get('grade');
+      const durationFilter = urlParams.get('duration');
+      
+      // パンくずリストの更新
+      const breadcrumbCurrentPage = document.querySelector('.breadcrumb .active');
+      if (breadcrumbCurrentPage) {
+        if (gradeFilter === 'junior') {
+          breadcrumbCurrentPage.textContent = '学年別: 中学生';
+        } else if (gradeFilter === 'high') {
+          breadcrumbCurrentPage.textContent = '学年別: 高校生';
+        } else if (durationFilter === 'long') {
+          breadcrumbCurrentPage.textContent = '長期化している不登校';
+        }
+      }
+      
+      // 記事一覧を表示
+      displayStoryList('grade_1st');
+      
+      // フィルタータグのクリックイベント
+      const filterTags = document.querySelectorAll('.filter-tag');
+      filterTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          // アクティブクラスを切り替え
+          filterTags.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // フィルターの値を取得
+          const filterValue = this.getAttribute('data-filter');
+          
+          // 新しいURLパラメータを設定
+          let searchParams = new URLSearchParams(window.location.search);
+          
+          if (filterValue === 'all') {
+            searchParams.delete('status');
+          } else {
+            searchParams.set('status', filterValue);
+          }
+          
+          // ページをリロードせずにURLを更新
+          const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+          window.history.pushState({}, '', newUrl);
+          
+          // 記事一覧を再表示
+          displayStoryList('grade_1st');
+        });
+      });
+      
+      // 並び順セレクトの変更イベント
+      const sortSelect = document.getElementById('sort-select');
+      if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+          const sortValue = this.value;
+          
+          // 新しいURLパラメータを設定
+          let searchParams = new URLSearchParams(window.location.search);
+          searchParams.set('sort', sortValue);
+          
+          // ページをリロードせずにURLを更新
+          const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+          window.history.pushState({}, '', newUrl);
+          
+          // 記事一覧を再表示
+          displayStoryList('grade_1st');
+        });
+      }
+    });
+  </script>
+  
+  <style>
+    .breadcrumb {
+      margin: 20px 0;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .breadcrumb ol {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .breadcrumb li {
+      font-size: 14px;
+    }
+    
+    .breadcrumb li:not(:last-child)::after {
+      content: ">";
+      margin: 0 10px;
+      color: var(--medium-gray);
+    }
+    
+    .breadcrumb a {
+      color: var(--primary-color);
+    }
+    
+    .breadcrumb .active {
+      color: var(--text-color);
+    }
+    
+    .category-filters {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: var(--light-gray);
+      border-radius: 8px;
+    }
+    
+    .filter-group {
+      margin-bottom: 10px;
+    }
+    
+    .filter-group:last-child {
+      margin-bottom: 0;
+    }
+    
+    .filter-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .filter-tag {
+      padding: 5px 12px;
+      border-radius: 20px;
+      background-color: white;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .filter-tag.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    #sort-select {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 30px 0;
+    }
+    
+    .pagination a {
+      padding: 8px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--primary-color);
+    }
+    
+    .pagination a:hover {
+      background-color: var(--light-gray);
+    }
+    
+    .page-numbers {
+      font-size: 14px;
+    }
+    
+    .current-page {
+      font-weight: bold;
+    }
+  </style>
+</main>
+
+<div id="common-footer"></div>
+
+<script>
+  // ページロード時に小学生関連の記事一覧を表示
+  document.addEventListener('DOMContentLoaded', function() {
+    displayStoryList('小学');
+  });
+</script>
+</body>
+</html>

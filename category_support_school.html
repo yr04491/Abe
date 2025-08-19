@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>ぼくらのみち — 学校サポート</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<body>
+<div id="common-header"></div>
+<main class='wrap'>
+<nav class="breadcrumb">ホーム / サポート / <span class="subtle">学校に相談</span></nav>
+<header class="card" id="first-steps-anchor">
+  <h1 class="title" style="font-size:24px;">学校に相談（学校にある支援の種類）</h1>
+  <p class="subtle">別室登校・校外学習扱い・SC（スクールカウンセラー）・SSW（スクールソーシャルワーカー）など。</p>
+</header>
+<section class="grid two">
+  <div class="card main" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(74,109,167,0.07); padding:28px 24px;">
+    <h2 style="font-size:1.3em; color:#4a6da7; margin-bottom:18px;">福井県内の学校サポート</h2>
+    <div class="support-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+      <div class="support-card" style="background:#f8fbff; border-radius:10px; box-shadow:0 1px 4px rgba(74,109,167,0.06); padding:20px 16px; display:flex; flex-direction:column; align-items:flex-start; transition:box-shadow 0.2s;">
+        <h3 style="color:#4a6da7; font-size:1.1em; margin-bottom:8px;">サポートA</h3>
+        <p style="font-size:0.98em; margin-bottom:16px;">サポートAの概要説明。<br>（例：学校内での個別対応や相談窓口など）</p>
+        <button class="open-modal-btn" data-support="A" style="background:#4a6da7; color:#fff; border:none; padding:8px 18px; border-radius:5px; font-size:0.97em; cursor:pointer;">詳細を見る</button>
+      </div>
+      <div class="support-card" style="background:#f8fbff; border-radius:10px; box-shadow:0 1px 4px rgba(74,109,167,0.06); padding:20px 16px; display:flex; flex-direction:column; align-items:flex-start; transition:box-shadow 0.2s;">
+        <h3 style="color:#4a6da7; font-size:1.1em; margin-bottom:8px;">サポートB</h3>
+        <p style="font-size:0.98em; margin-bottom:16px;">サポートBの概要説明。<br>（例：専門スタッフによるサポート）</p>
+        <button class="open-modal-btn" data-support="B" style="background:#4a6da7; color:#fff; border:none; padding:8px 18px; border-radius:5px; font-size:0.97em; cursor:pointer;">詳細を見る</button>
+      </div>
+      <div class="support-card" style="background:#f8fbff; border-radius:10px; box-shadow:0 1px 4px rgba(74,109,167,0.06); padding:20px 16px; display:flex; flex-direction:column; align-items:flex-start; transition:box-shadow 0.2s;">
+        <h3 style="color:#4a6da7; font-size:1.1em; margin-bottom:8px;">サポートC</h3>
+        <p style="font-size:0.98em; margin-bottom:16px;">サポートCの概要説明。<br>（例：保護者向け相談会など）</p>
+        <button class="open-modal-btn" data-support="C" style="background:#4a6da7; color:#fff; border:none; padding:8px 18px; border-radius:5px; font-size:0.97em; cursor:pointer;">詳細を見る</button>
+      </div>
+      <div class="support-card" style="background:#f8fbff; border-radius:10px; box-shadow:0 1px 4px rgba(74,109,167,0.06); padding:20px 16px; display:flex; flex-direction:column; align-items:flex-start; transition:box-shadow 0.2s;">
+        <h3 style="color:#4a6da7; font-size:1.1em; margin-bottom:8px;">サポートD</h3>
+        <p style="font-size:0.98em; margin-bottom:16px;">サポートDの概要説明。<br>（例：学習支援や居場所の提供）</p>
+        <button class="open-modal-btn" data-support="D" style="background:#4a6da7; color:#fff; border:none; padding:8px 18px; border-radius:5px; font-size:0.97em; cursor:pointer;">詳細を見る</button>
+      </div>
+      <div class="support-card" style="background:#f8fbff; border-radius:10px; box-shadow:0 1px 4px rgba(74,109,167,0.06); padding:20px 16px; display:flex; flex-direction:column; align-items:flex-start; transition:box-shadow 0.2s;">
+        <h3 style="color:#4a6da7; font-size:1.1em; margin-bottom:8px;">サポートE</h3>
+        <p style="font-size:0.98em; margin-bottom:16px;">サポートEの概要説明。<br>（例：外部機関との連携支援）</p>
+        <button class="open-modal-btn" data-support="E" style="background:#4a6da7; color:#fff; border:none; padding:8px 18px; border-radius:5px; font-size:0.97em; cursor:pointer;">詳細を見る</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<!-- サポート詳細モーダル -->
+<div id="support-modal" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); justify-content:center; align-items:center;">
+  <div class="modal-content" style="background:#fff; padding:36px 24px 28px 24px; border-radius:14px; max-width:420px; width:92%; position:relative; box-shadow:0 4px 24px rgba(74,109,167,0.13);">
+    <span class="close-modal" style="position:absolute; top:12px; right:18px; font-size:28px; color:#4a6da7; cursor:pointer;">&times;</span>
+    <h2 id="modal-title" style="font-size:1.2em; color:#4a6da7; margin-bottom:12px;">サポート詳細</h2>
+    <div id="modal-body" style="font-size:1em; color:#333; margin-bottom:18px;">ここに詳細が入ります。</div>
+    <button id="modal-experience-btn" style="background:#f9a825; color:#fff; border:none; padding:10px 24px; border-radius:6px; font-size:1em; cursor:pointer; font-weight:600;">体験談を見る</button>
+  </div>
+</div>
+<div id="common-footer"></div>
+<script>
+// サポート詳細データ
+const supportDetails = {
+  'A': {
+    title: 'サポートA',
+    body: 'サポートAの詳細説明です。学校内での個別対応や相談窓口など、子どもや保護者が安心して相談できる体制を整えています。',
+    link: 'search.html?tag=supportA'
+  },
+  'B': {
+    title: 'サポートB',
+    body: 'サポートBの詳細説明です。専門スタッフによるカウンセリングやサポートを受けることができます。',
+    link: 'search.html?tag=supportB'
+  },
+  'C': {
+    title: 'サポートC',
+    body: 'サポートCの詳細説明です。保護者向けの相談会や情報提供を行っています。',
+    link: 'search.html?tag=supportC'
+  },
+  'D': {
+    title: 'サポートD',
+    body: 'サポートDの詳細説明です。学習支援や居場所の提供など、多様なサポートを実施しています。',
+    link: 'search.html?tag=supportD'
+  },
+  'E': {
+    title: 'サポートE',
+    body: 'サポートEの詳細説明です。外部機関と連携した支援も行っています。',
+    link: 'search.html?tag=supportE'
+  }
+};
+
+// モーダル表示処理
+document.querySelectorAll('.open-modal-btn, .support-link').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const key = this.getAttribute('data-support');
+    if (supportDetails[key]) {
+      document.getElementById('modal-title').textContent = supportDetails[key].title;
+      document.getElementById('modal-body').textContent = supportDetails[key].body;
+      document.getElementById('modal-experience-btn').onclick = function() {
+        window.location.href = supportDetails[key].link;
+      };
+      document.getElementById('support-modal').style.display = 'flex';
+    }
+  });
+});
+document.querySelector('.close-modal').onclick = function() {
+  document.getElementById('support-modal').style.display = 'none';
+};
+window.addEventListener('click', function(e) {
+  if (e.target === document.getElementById('support-modal')) {
+    document.getElementById('support-modal').style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>

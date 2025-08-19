@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>ぼくらのみち — 記事投稿</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<body>
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html">ぼくらのみち <span class="subtle">福井県版</span></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="category_grade_1st.html">小学生</a></li>
+          <li><a href="category_support_school.html">学校サポート</a></li>
+          <li><a href="support.html">サポート情報</a></li>
+          <li><a href="post_form.html">体験談投稿</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="form-section">
+    <h1 class="page-title">体験談を投稿する</h1>
+    <p class="intro-text">あなたの経験を共有することで、同じ状況にある多くの方の助けになります。以下のフォームに記入してください。</p>
+    
+    <div class="alert hidden" id="submission-result"></div>
+    
+    <form id="story-form" class="story-form">
+      <div class="form-group">
+        <label for="title">タイトル*</label>
+        <input type="text" id="title" name="title" required placeholder="例：中学校からの不登校から自分の居場所を見つけた事例">
+      </div>
+      
+      <div class="form-group">
+        <label for="created_date">記載日*</label>
+        <input type="text" id="created_date" name="created_date" required placeholder="例：2024.6">
+      </div>
+      
+      <div class="form-group">
+        <label for="grade">不登校になった学年*</label>
+        <input type="text" id="grade" name="grade" required placeholder="例：中学１年生">
+      </div>
+      
+      <div class="form-group">
+        <label for="family">家族構成</label>
+        <input type="text" id="family" name="family" placeholder="例：母・本人・妹">
+      </div>
+      
+      <h2 class="form-section-title">不登校について</h2>
+      
+      <div class="form-group">
+        <label for="trigger">不登校になったきっかけ*</label>
+        <textarea id="trigger" name="trigger" required placeholder="例：中１から突然不登校になり、原因はずっとわからないままでした..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="parent_actions">不登校になった時に親はどう行動したか*</label>
+        <textarea id="parent_actions" name="parent_actions" required placeholder="例：諭す、褒める、それでも動かなかったので..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="child_reaction">それに対して子どもはどう反応したか*</label>
+        <textarea id="child_reaction" name="child_reaction" required placeholder="例：可愛そうなくらい憔悴して、泣いて..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="school_reaction">学校側の反応はどうだったか*</label>
+        <textarea id="school_reaction" name="school_reaction" required placeholder="例：担任の先生に相談しても..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="initial_reflection">最初の頃、どんな思いだったか</label>
+        <textarea id="initial_reflection" name="initial_reflection" placeholder="例：不登校についてなんの知識もなかったから..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="life_after_month">不登校になって１ヶ月くらいどのような生活をしていたか*</label>
+        <textarea id="life_after_month" name="life_after_month" required placeholder="例：当時は実家に子どもと３人で身を寄せていたので..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="improvement">改善していったと思ったのはどんな時期？*</label>
+        <textarea id="improvement" name="improvement" required placeholder="例：不登校から半年くらい経って、子どものキャンプ教室に参加した時..."></textarea>
+      </div>
+      
+      <h2 class="form-section-title">各学年の生活</h2>
+      
+      <div class="form-group">
+        <label for="elementary">小学生の頃</label>
+        <textarea id="elementary" name="elementary" placeholder="例：優等生タイプで、学校の先生からも「どうやったらこんないい子を育てられるんですか」と言われるほどでした..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="middle_school">中学生の頃</label>
+        <textarea id="middle_school" name="middle_school" placeholder="例：中学校に入ってすぐ不登校になってしまいました..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="high_school">高校の頃</label>
+        <textarea id="high_school" name="high_school" placeholder="例：せっかく受かった全日制の高校は..."></textarea>
+      </div>
+      
+      <h2 class="form-section-title">通信や定時制高校に通われた経験</h2>
+      
+      <div class="form-group">
+        <label for="alt_school_name">高校名</label>
+        <input type="text" id="alt_school_name" name="alt_school_name" placeholder="例：KADOKAWAドワンゴ学園S高等学校">
+      </div>
+      
+      <div class="form-group">
+        <label for="alt_school_period">通学期間</label>
+        <input type="text" id="alt_school_period" name="alt_school_period" placeholder="例：2024年4月～現在（高校3年生）">
+      </div>
+      
+      <div class="form-group">
+        <label for="alt_school_reason">その学校にした理由</label>
+        <input type="text" id="alt_school_reason" name="alt_school_reason" placeholder="例：話題だった。学校に行く事自体が難しいと感じた。">
+      </div>
+      
+      <div class="form-group">
+        <label for="alt_school_experience">通ってどうだったか</label>
+        <textarea id="alt_school_experience" name="alt_school_experience" placeholder="例：レポートを提出すれば良いだけで、自由な時間が多くバイトや自分がやりたい活動をしながら..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="alt_school_cost">かかった費用</label>
+        <input type="text" id="alt_school_cost" name="alt_school_cost" placeholder="例：補助があるので、学費は10万円ほどだったと思います...">
+      </div>
+      
+      <h2 class="form-section-title">利用したサポート</h2>
+      
+      <div id="supports">
+        <div class="support-entry">
+          <div class="form-group">
+            <label for="support_type_1">サポートの種類</label>
+            <input type="text" id="support_type_1" name="support_type_1" placeholder="例：医療機関、スクールカウンセラー、など">
+          </div>
+          
+          <div class="form-group">
+            <label for="support_experience_1">利用経験</label>
+            <textarea id="support_experience_1" name="support_experience_1" placeholder="例：高校生の時、一度受診をし..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="support_evaluation_1">評価</label>
+            <textarea id="support_evaluation_1" name="support_evaluation_1" placeholder="例：行くべきか、非常に迷いましたが..."></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <button type="button" id="add-support" class="add-button">+ サポートを追加</button>
+      
+      <h2 class="form-section-title">その他</h2>
+      
+      <div class="form-group">
+        <label for="good_activities">こんな活動や周囲の動きが子どもにとって良かったもの</label>
+        <textarea id="good_activities" name="good_activities" placeholder="例：母子で福井市の「まちなかボランティアガイド」に応募し..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="current_thoughts">今、不登校に対してどんな思いを持っているか</label>
+        <textarea id="current_thoughts" name="current_thoughts" placeholder="例：学校に通っていれば得られた事もたくさんあったとは思いますが..."></textarea>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="submit-button">投稿する</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-links">
+      <div class="footer-section">
+        <h4>カテゴリ</h4>
+        <ul>
+          <li><a href="category_grade_1st.html">学年別: 小学1年生</a></li>
+          <li><a href="category_support_school.html">支援別: 学校での支援</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>サイト情報</h4>
+        <ul>
+          <li><a href="search.html">検索</a></li>
+          <li><a href="support.html">サポート</a></li>
+          <li><a href="post_form.html">記事投稿</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ぼくらのみち - 福井県版</p>
+      <p>更新: 2025-08-17</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // サポートフォーム追加ボタンの処理
+  let supportCount = 1;
+  
+  document.getElementById('add-support').addEventListener('click', function() {
+    supportCount++;
+    const supportContainer = document.getElementById('supports');
+    
+    const newSupport = document.createElement('div');
+    newSupport.className = 'support-entry';
+    newSupport.innerHTML = `
+      <hr class="form-divider">
+      <div class="form-group">
+        <label for="support_type_${supportCount}">サポートの種類</label>
+        <input type="text" id="support_type_${supportCount}" name="support_type_${supportCount}" placeholder="例：医療機関、スクールカウンセラー、など">
+      </div>
+      
+      <div class="form-group">
+        <label for="support_experience_${supportCount}">利用経験</label>
+        <textarea id="support_experience_${supportCount}" name="support_experience_${supportCount}" placeholder="例：高校生の時、一度受診をし..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="support_evaluation_${supportCount}">評価</label>
+        <textarea id="support_evaluation_${supportCount}" name="support_evaluation_${supportCount}" placeholder="例：行くべきか、非常に迷いましたが..."></textarea>
+      </div>
+    `;
+    
+    supportContainer.appendChild(newSupport);
+  });
+  
+  // フォーム送信処理
+  document.getElementById('story-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // フォームデータの収集
+    const formData = new FormData(this);
+    const storyData = {
+      title: formData.get('title'),
+      created_date: formData.get('created_date'),
+      grade: formData.get('grade'),
+      family: formData.get('family'),
+      content: {
+        trigger: formData.get('trigger'),
+        parent_actions: formData.get('parent_actions'),
+        child_reaction: formData.get('child_reaction'),
+        school_reaction: formData.get('school_reaction'),
+        initial_reflection: formData.get('initial_reflection'),
+        life_after_month: formData.get('life_after_month'),
+        improvement: formData.get('improvement')
+      },
+      life_stages: {
+        elementary: formData.get('elementary'),
+        middle_school: formData.get('middle_school'),
+        high_school: formData.get('high_school')
+      },
+      support: []
+    };
+    
+    // 通信制・定時制高校の情報（入力されている場合のみ）
+    if (formData.get('alt_school_name')) {
+      storyData.alternative_school = {
+        name: formData.get('alt_school_name'),
+        period: formData.get('alt_school_period'),
+        reason: formData.get('alt_school_reason'),
+        experience: formData.get('alt_school_experience'),
+        cost: formData.get('alt_school_cost')
+      };
+    }
+    
+    // サポート情報の収集
+    for (let i = 1; i <= supportCount; i++) {
+      const supportType = formData.get(`support_type_${i}`);
+      if (supportType) {
+        storyData.support.push({
+          type: supportType,
+          experience: formData.get(`support_experience_${i}`),
+          evaluation: formData.get(`support_evaluation_${i}`)
+        });
+      }
+    }
+    
+    // その他の情報
+    storyData.good_activities = formData.get('good_activities');
+    storyData.current_thoughts = formData.get('current_thoughts');
+    
+    // JSONへの保存処理の呼び出し
+    saveStory(storyData);
+  });
+  
+  // 記事データをJSONに保存する関数
+  async function saveStory(storyData) {
+    try {
+      // 既存のストーリーデータを読み込む
+      const response = await fetch('./data/stories.json');
+      if (!response.ok) {
+        throw new Error('データの読み込みに失敗しました');
+      }
+      
+      const data = await response.json();
+      
+      // 新しい記事IDを設定
+      storyData.id = data.stories.length > 0 
+        ? Math.max(...data.stories.map(s => s.id)) + 1 
+        : 1;
+      
+      // 既存データに新しい記事を追加
+      data.stories.push(storyData);
+      
+      // ここでサーバーサイドの処理を行うべきですが、静的サイトのため
+      // LocalStorageに一時保存します（実際の実装では適切なバックエンドが必要）
+      localStorage.setItem('pendingStories', JSON.stringify(data));
+      
+      // フォーム送信成功メッセージ
+      const resultElement = document.getElementById('submission-result');
+      resultElement.textContent = '投稿が完了しました。管理者の確認後に公開されます。';
+      resultElement.className = 'alert success';
+      
+      // フォームをリセット
+      document.getElementById('story-form').reset();
+      
+    } catch (error) {
+      console.error('エラーが発生しました:', error);
+      
+      const resultElement = document.getElementById('submission-result');
+      resultElement.textContent = 'エラーが発生しました。もう一度お試しください。';
+      resultElement.className = 'alert error';
+    }
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>00 まずどうする？ - ぼくらのみち</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<style>
+  :root{
+    --bg:#fafafa;
+    --ink:#222;
+    --muted:#55606d;
+    --brand:#2f80ed;
+    --accent:#ffd166;
+    --accent-2:#ffe8a3;
+    --card:#ffffff;
+    --dot-1:#7dd3fc; /* water */
+    --dot-2:#86efac; /* leaf */
+    --dot-3:#fde047; /* sun  */
+    --dot-4:#fca5a5; /* coral*/
+    --dot-5:#c4b5fd; /* lilac*/
+    --shadow:0 10px 30px rgba(0,0,0,.06);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  .wrap{max-width:980px;margin-inline:auto;padding:28px 20px 80px}
+  /* Header row */
+  .content-toc{
+    display:grid;
+    grid-template-columns: 70px 1fr;
+    gap:20px;
+    align-items:start;
+    margin-bottom:12px;
+  }
+  /* left dots */
+  .dots{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .dot{width:14px;height:14px;border-radius:50%}
+  .dot:nth-child(1){background:var(--dot-1)}
+  .dot:nth-child(2){background:var(--dot-2)}
+  .dot:nth-child(3){background:var(--dot-3)}
+  .dot:nth-child(4){background:var(--dot-4)}
+  .dot:nth-child(5){background:var(--dot-5)}
+  /* number badge */
+  .num-badge{
+    display:inline-grid;place-items:center;
+    width:74px;height:74px;border-radius:20px;
+    background:#fff;box-shadow:var(--shadow);border:1px solid #eee;
+    font-weight:800;font-size:36px;letter-spacing:.05em;color:#333;
+  }
+  .title-block h1{font-size:36px;margin:0 0 10px}
+  .lead-text{
+    display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+    font-weight:800;font-size:20px;margin:10px 0 18px;
+  }
+  .lead-text:before{
+    content:"＼";
+    color:#8b9aad;
+    font-weight:900;
+  }
+  .lead-text:after{
+    content:"／";
+    color:#8b9aad;
+    font-weight:900;
+  }
+  .sublead{font-weight:700;color:#111;margin-top:-8px}
+  /* alert headline */
+  .alert-h{
+    font-weight:900;text-align:center;font-size:22px;margin:34px 0 18px
+  }
+  /* block cards */
+  .card{
+    background:var(--card);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow);border:1px solid #eee;
+  }
+  .note{
+    border:2px dashed #d9dee5;background:#fff; border-radius:14px;
+    padding:18px 20px;margin:14px 0;
+  }
+  .note small{color:var(--muted)}
+  /* 8050 and link note */
+  .pill-link{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--accent-2);
+    border:1px solid #f7d97e;
+    padding:14px 16px;border-radius:12px;font-weight:700
+  }
+  .pill-link svg{width:22px;height:22px}
+  /* CTA button */
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 18px;border-radius:12px;background:var(--accent);
+    color:#3b3b00;font-weight:800;border:0;cursor:pointer;
+    box-shadow:var(--shadow)
+  }
+  .cta svg{width:22px;height:22px}
+  /* helper layout for wide callouts */
+  .stack{display:grid;gap:14px}
+  /* footer space */
+  .spacer{height:16px}
+  /* small screens */
+  @media (max-width:640px){
+    .content-toc{grid-template-columns: 40px 1fr}
+    .num-badge{width:60px;height:60px;font-size:28px;border-radius:16px}
+    .title-block h1{font-size:28px}
+    .lead-text{font-size:18px}
+  }
+</style>
+<body>
+<div id="common-header"></div>
+
+<main class="container">
+  <div class="wrap">
+
+    <!-- Header / TOC-like top -->
+    <section class="content-toc">
+      <div class="dots" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+
+      <div class="title-block">
+        <div class="num-badge" aria-label="セクション番号">00</div>
+        <h1>まずどうする</h1>
+        <div class="lead-text">大丈夫です。なんとかなります。</div>
+        <div class="sublead">ご家族が落ち着くことが第一です</div>
+      </div>
+    </section>
+
+    <section class="stack">
+      <p>不登校になっても人生が終わる訳ではありません。<br>
+      お子さんは今、自分の心を守るため、必死に戦っているところです。<br>
+      サボりたいが為に不登校になる子どもはほとんどいません。</p>
+      <p>お子さんの心が回復できるように、周囲が慌てず、落ち着いて、子どもが安心できる家庭を維持する事を意識してください。</p>
+
+      <h2 class="alert-h">注意…不登校から引きこもりへ悪化させてはいけない</h2>
+
+      <div class="card">
+        <p>不登校と引きこもりの違いはなんでしょう？ 「不登校」は学校に行かない事。外出が出来る元気な子どもたちも含まれます。</p>
+
+        <div class="note">
+          <strong>文部科学省の定義によると、</strong><br />
+          「<u>年間30日以上</u>、病気や経済的な理由ではなく、何らかの心理的・情緒的、あるいは社会的な要因・背景により登校しない、あるいはできない児童生徒」を指します。
+        </div>
+
+        <p><strong>一方「引きこもり」</strong>は自分の部屋や家から出ない状態の事。</p>
+
+        <div class="note">
+          <strong>厚生労働省の定義によると、</strong><br />
+          「仕事や学校に行かず、家庭以外の人との交流をほとんどせず、<u>原則6か月以上</u>にわたって続けて自宅にとどまり続けている状態」を指します。
+        </div>
+      </div>
+
+      <div class="note">
+        こちらは深刻です。家族の関係性が破綻している事も多く、近年社会問題とされている「8050問題」にもなりかねません。
+      </div>
+
+      <div class="note">
+        <small>8050問題…80代の親が、自宅にひきこもる50代の子どもの生活を支え、経済的にも精神的にも行き詰まってしまう状態のこと。</small>
+      </div>
+
+      <p>そうならせないためには、不登校になったお子さんへの接し方が何より大切です。</p>
+      <p>まず覚えておいていただきたいのは、小学校・中学校は登校しなくても卒業できます。高校の受験にも登校日数は関係ありません。<br>
+      焦らなくても、大丈夫です。勉強ぐらい、その気になればいくらでも巻き返せます。</p>
+
+      <p>
+        <a class="pill-link" href="#" aria-label="小中学校の卒業についての外部リンク">
+          <!-- hand icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 13v-2a4 4 0 0 1 8 0v2"/>
+            <path d="M12 19v-6"/>
+            <path d="M5 13h14"/>
+          </svg>
+          小中学校の卒業について※〇〇のサイトにリンクします
+        </a>
+      </p>
+
+      <h3>まずは、子どもを責めないこと。</h3>
+
+      <div class="card">
+        <p>「なんで行かないの？」「いつまで休むの？」と問い詰められると、子どもはますます自信を失い、自分の居場所を見失ってしまいます。今は「心を回復する時間」だととらえて、そっと見守ってあげてください。</p>
+
+        <p>そして、リビングなど家族の集まる場所を、子どもにとって「過ごしやすい場所」にしておくことも大切です。話しかけなくてもいい、一緒にテレビを見るだけでもいい、安心していられる空間があるだけで、子どもは少しずつ外の世界に目を向ける力を取り戻していきます。</p>
+
+        <p>どこにも居場所がないと感じてしまうと、子どもは自分の部屋に閉じこもりがちになります。そうならないように、「ここにいていいよ」「何も話さなくていいよ」というメッセージを、日々の関わりの中で伝えていきましょう。家庭の中に、ほっとできる場所があること。それが、子どもの回復への第一歩になります。</p>
+
+        <p>
+          <a class="cta" href="stories_list.html">
+            <!-- arrow icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            体験談をみてみよう
+          </a>
+        </p>
+      </div>
+
+      <div class="spacer"></div>
+    </section>
+  </div>
+</main>
+
+<div id="common-footer"></div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>ぼくらのみち — ホーム</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<body>
+<div id="common-header"></div>
+
+<main class="container">
+  <section class="toc">
+    <h1 class="site-title">ぼくらのみち <small>福井県版</small></h1>
+    <p class="lead">同じように悩んできた保護者の体験談から、安心感と具体的な対応策を得られる場</p>
+    
+    <h2 class="section-title">ナビゲーション</h2>
+    
+    <nav class="toc-list">
+      <a class="toc-item" href="00_what_to_do.html">
+        <span class="toc-num">00</span>
+        <span class="toc-head">まずどうする？</span>
+        <span class="toc-sub">おうちの人が焦らないヒント</span>
+      </a>
+      <a class="toc-item" href="01_school_support.html">
+        <span class="toc-num">01</span>
+        <span class="toc-head">学校に相談</span>
+        <span class="toc-sub">学校にある支援の種類</span>
+      </a>
+      <a class="toc-item" href="02_public_support.html">
+        <span class="toc-num">02</span>
+        <span class="toc-head">行政が行う公的支援</span>
+        <span class="toc-sub">公的機関の支援の種類</span>
+      </a>
+      <a class="toc-item" href="03_community_places.html">
+        <span class="toc-num">03</span>
+        <span class="toc-head">まだまだある！みんなの居場所</span>
+        <span class="toc-sub">こどもの居場所／保護者の居場所</span>
+      </a>
+      <a class="toc-item" href="04_after_junior_high.html">
+        <span class="toc-num">04</span>
+        <span class="toc-head">中学卒業のこと</span>
+        <span class="toc-sub">定時・通信・サポート校</span>
+      </a>
+      <a class="toc-item" href="05_post_form.html">
+        <span class="toc-num">05</span>
+        <span class="toc-head">みんなで知恵を出し合おう！</span>
+        <span class="toc-sub">当事者の体験談／専門家Q&A</span>
+      </a>
+    </nav>
+    
+    <div class="search-box">
+      <input type="text" id="search-input" class="search-input" placeholder="キーワードで検索">
+      <button type="submit" id="search-button" class="search-button">検索</button>
+    </div>
+
+    <div class="category-paths">
+      <div class="category-path">
+        <h3>お子さんの学年から探す</h3>
+        <ul class="path-links">
+          <li><a href="category_grade_1st.html">小学生から</a></li>
+          <li><a href="category_grade_1st.html?grade=junior">中学生から</a></li>
+          <li><a href="category_grade_1st.html?grade=high">高校生から</a></li>
+          <li><a href="category_grade_1st.html?duration=long">長期化している場合</a></li>
+        </ul>
+      </div>
+      
+      <div class="category-path">
+        <h3>きっかけから探す</h3>
+        <ul class="path-links">
+          <li><a href="search.html?tag=bullying">いじめ／友人関係</a></li>
+          <li><a href="search.html?tag=study">勉強のつまずき</a></li>
+          <li><a href="search.html?tag=development">発達特性・体調要因</a></li>
+          <li><a href="search.html?tag=teacher">教師や学校との関係</a></li>
+          <li><a href="search.html?tag=other">その他（進級・転校など）</a></li>
+        </ul>
+      </div>
+      
+      <div class="category-path">
+        <h3>状況から探す</h3>
+        <ul class="path-links">
+          <li><a href="search.html?status=initial">不登校初期（～1か月）</a></li>
+          <li><a href="search.html?status=half-year">半年程度経過</a></li>
+          <li><a href="search.html?status=over-year">1年以上経過</a></li>
+          <li><a href="search.html?status=improving">徐々に改善してきた</a></li>
+          <li><a href="search.html?status=continuing">今も続いている</a></li>
+        </ul>
+      </div>
+      
+      <div class="category-path">
+        <h3>支援体験から探す</h3>
+        <ul class="path-links">
+          <li><a href="category_support_school.html">学校での支援</a></li>
+          <li><a href="support.html">行政・医療サポート</a></li>
+          <li><a href="support.html#free-school">フリースクール</a></li>
+          <li><a href="support.html#high-school">通信制・定時制高校</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .toc { max-width: 800px; margin: 24px auto; padding: 20px; background:#f6f5f1; border-radius: 20px; }
+    .site-title { font-weight: 800; letter-spacing: .03em; margin: 0 0 6px; }
+    .site-title small { font-size: .5em; margin-left: .4em; }
+    .lead { margin: 0 0 16px; color:#555; }
+    .search-box { margin: 20px 0; }
+    .search-input {
+      width: 80%; 
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      font-size: 16px;
+    }
+    .search-button {
+      width: 20%;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    .category-paths {
+      display: grid;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    @media (min-width: 768px) {
+      .category-paths {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .category-path {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .category-path h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: var(--primary-color);
+      padding-bottom: 6px;
+      border-bottom: 1px solid #eee;
+    }
+    .path-links {
+      list-style: none;
+    }
+    .path-links li {
+      margin: 8px 0;
+    }
+    .path-links a {
+      display: block;
+      padding: 6px 0;
+      color: var(--text-color);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .path-links a:hover {
+      background-color: var(--light-gray);
+      padding-left: 10px;
+    }
+    .section-title {
+      margin: 30px 0 15px;
+      font-size: 20px;
+      color: #555;
+    }
+    .toc-list { display: grid; gap: 10px; }
+    .toc-item {
+      display: grid; grid-template-columns: 50px 1fr; gap: 8px;
+      background:#fff; border-radius: 16px; padding: 12px 14px;
+      text-decoration: none; color: inherit; border: 1px solid #e6e3dc;
+    }
+    .toc-item:hover { box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+    .toc-num { font-weight: 800; font-size: 24px; align-self: center; }
+    .toc-head { font-weight: 700; }
+    .toc-sub { font-size: 12px; color:#666; }
+    @media (min-width: 720px) {
+      .toc-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</main>
+
+
+
+<script>
+  // 検索フォームの送信処理
+  document.addEventListener('DOMContentLoaded', function() {
+    // 検索ボタンクリック時の処理
+    const searchButton = document.getElementById('search-button');
+    if (searchButton) {
+      searchButton.addEventListener('click', function() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+          window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        }
+      });
+    }
+    
+    // Enterキーでも検索できるように
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+    }
+    
+    // 検索ページの場合は、URLパラメータから検索を実行
+    if (window.location.pathname.includes('search.html')) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      const tagFilter = urlParams.get('tag');
+      const statusFilter = urlParams.get('status');
+      
+      // 検索キーワードを表示
+      const searchTermElement = document.getElementById('search-term');
+      if (searchTermElement) {
+        if (query) {
+          searchTermElement.textContent = `「${query}」`;
+        } else if (tagFilter) {
+          let tagName = '';
+          switch(tagFilter) {
+            case 'bullying': tagName = 'いじめ／友人関係'; break;
+            case 'study': tagName = '勉強のつまずき'; break;
+            case 'development': tagName = '発達特性・体調要因'; break;
+            case 'teacher': tagName = '教師や学校との関係'; break;
+            case 'other': tagName = 'その他（進級・転校など）'; break;
+          }
+          searchTermElement.textContent = `タグ: 「${tagName}」`;
+        } else if (statusFilter) {
+          let statusName = '';
+          switch(statusFilter) {
+            case 'initial': statusName = '不登校初期（～1か月）'; break;
+            case 'half-year': statusName = '半年程度経過'; break;
+            case 'over-year': statusName = '1年以上経過'; break;
+            case 'improving': statusName = '徐々に改善してきた'; break;
+            case 'continuing': statusName = '今も続いている'; break;
+          }
+          searchTermElement.textContent = `状況: 「${statusName}」`;
+        }
+      }
+      
+      // 検索を実行して結果を表示
+      if (query || tagFilter || statusFilter) {
+        searchStories(query || '').then(results => {
+          displaySearchResults(results);
+        });
+      }
+    }
+  });
+  
+  // 検索結果を表示する関数
+  async function displaySearchResults(results) {
+    const searchResultsContainer = document.getElementById('search-results');
+    
+    if (!searchResultsContainer) {
+      console.error('検索結果表示用のコンテナが見つかりません');
+      return;
+    }
+    
+    searchResultsContainer.innerHTML = '';
+    
+    if (results.length === 0) {
+      searchResultsContainer.innerHTML = '<p class="no-results">該当する記事が見つかりませんでした。別のキーワードで検索してください。</p>';
+      return;
+    }
+    
+    results.forEach(story => {
+      const storyItem = document.createElement('div');
+      storyItem.className = 'search-result-item';
+      
+      storyItem.innerHTML = `
+        <h3 class="story-title"><a href="post.html?id=${story.id}">${story.title}</a></h3>
+        <div class="story-meta">
+          <span class="story-date">記載日: ${story.created_date}</span>
+          <span class="story-grade">不登校時の学年: ${story.grade}</span>
+        </div>
+        <div class="story-excerpt">
+          ${story.content.trigger.substring(0, 150)}...
+        </div>
+        <a href="post.html?id=${story.id}" class="read-more-btn">続きを読む</a>
+      `;
+      
+      searchResultsContainer.appendChild(storyItem);
+    });
+  }
+</script>
+</main>
+<div id="common-footer"></div>
+</body>
+</html>

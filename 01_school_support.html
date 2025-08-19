@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>01 学校に相談｜不登校サポート</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<style>
+  :root{
+    --bg:#f7f7f7;
+    --ink:#1f2937;
+    --muted:#667085;
+    --card:#ffffff;
+    --line:#e5e7eb;
+    --brand:#2f80ed;
+    --btn:#dbeafe;
+    --note:#fff;
+    --shadow:0 10px 28px rgba(0,0,0,.06);
+    --radius:16px;
+    --dash:#a3aab3;
+    --dot-1:#7dd3fc;--dot-2:#86efac;--dot-3:#fde047;--dot-4:#fca5a5;--dot-5:#c4b5fd;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",Meiryo,sans-serif;line-height:1.9}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:980px;margin-inline:auto;padding:28px 16px 80px}
+
+  /* header */
+  .head{
+    display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start;margin-bottom:8px;
+  }
+  .dots{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .dot{width:14px;height:14px;border-radius:50%}
+  .dot:nth-child(1){background:var(--dot-1)}
+  .dot:nth-child(2){background:var(--dot-2)}
+  .dot:nth-child(3){background:var(--dot-3)}
+  .dot:nth-child(4){background:var(--dot-4)}
+  .dot:nth-child(5){background:var(--dot-5)}
+
+  .num{
+    display:inline-grid;place-items:center;
+    width:74px;height:74px;border-radius:20px;background:#fff;
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    font-weight:800;font-size:36px;color:#334155;letter-spacing:.04em
+  }
+  h1{font-size:36px;margin:6px 0 0}
+  .lead{
+    text-align:center;font-weight:800;font-size:20px;margin:26px 0 8px
+  }
+
+  /* notes / cards */
+  .dash{
+    border:2px dashed var(--dash);border-radius:16px;background:var(--note);
+    padding:18px 20px;margin:18px 0
+  }
+  .card{
+    background:var(--card);border-radius:var(--radius);border:1px solid var(--line);
+    box-shadow:var(--shadow);padding:22px;margin:22px 0
+  }
+  h2{font-size:22px;margin:34px 0 10px;text-align:center}
+  h3{font-size:20px;margin:10px 0 6px}
+  p{margin:0 0 12px}
+
+  /* button */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:12px 16px;border-radius:12px;background:var(--btn);
+    font-weight:800;border:1px solid #bfdbfe;box-shadow:var(--shadow)
+  }
+  .btn svg{width:22px;height:22px}
+  .box{padding:16px 0}
+  .indent{padding-left:2px;color:var(--muted)}
+  @media (max-width:640px){
+    .head{grid-template-columns:40px 1fr}
+    .num{width:60px;height:60px;font-size:28px;border-radius:16px}
+    h1{font-size:28px}
+    .lead{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div id="common-header"></div>
+
+  <main class="wrap">
+
+    <!-- Header -->
+    <section class="head">
+      <div class="dots" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <div>
+        <div class="num" aria-label="セクション番号">01</div>
+        <h1>学校に相談</h1>
+      </div>
+    </section>
+
+    <p class="lead">まずは学校に相談してみよう</p>
+
+    <section>
+      <p>学校に電話して、「学校に行けない状態になってしまった」事を伝え、相談に行ってください。</p>
+
+      <div class="dash">
+        体験談…不登校は先生にとっても神経を使う問題なので、親に不登校という言葉を使う事を遠慮し支援案内が伝わらない場合もあります。親側から積極的に、支援を求めてください。
+      </div>
+
+      <h2>考えるのは子どもの笑顔。<br>プライドは捨てて、いろんなところに相談して</h2>
+
+      <h2>学校の中にどんな支援があるの？<br>支援の種類</h2>
+      <p class="indent">福井県や各市町が提供している不登校支援には主に以下のものがあります。<br>※すべて無料</p>
+
+      <!-- スクールカウンセラー -->
+      <div class="card">
+        <h3>スクールカウンセラーの紹介</h3>
+        <p>悩みを聞く専門家であるカウンセラーが、児童生徒の悩みや思いを聞いたり、アドバイスしたりします。先生には言えない（言いにくい）ことも話せます。保護者も相談できます。<br>※相談依頼は、各学校へお問い合わせください。</p>
+      </div>
+
+      <!-- 校内サポートルーム -->
+      <div class="dash">
+        <h3 style="margin-top:0">校内サポートルーム</h3>
+        <p>県内50校に設置　詳しくはどこにかいてあるのかな？</p>
+        <div class="box">
+          <a class="btn" href="#">
+            <!-- hand icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 11V7a2 2 0 1 1 4 0v7"/>
+              <path d="M13 12a2 2 0 0 1 4 0v3"/>
+              <path d="M5 12h14"/>
+            </svg>
+            校内サポートルーム情報を見る
+          </a>
+        </div>
+      </div>
+
+      <!-- ライフパートナー制度 -->
+      <div class="dash">
+        <h3 style="margin-top:0">ライフパートナー制度</h3>
+        <p>大学生が一人ひとりをサポートしてくれる　詳しくはこちら（リンクはないのか？）</p>
+        <div class="box">
+          <a class="btn" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 11V7a2 2 0 1 1 4 0v7"/>
+              <path d="M13 12a2 2 0 0 1 4 0v3"/>
+              <path d="M5 12h14"/>
+            </svg>
+            ライフパートナー制度の情報を見る
+          </a>
+        </div>
+
+        <div class="box" style="text-align:center">
+          <a class="btn" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            体験談をみてみよう
+          </a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+  
+<div id="common-footer"></div>
+</body>
+</html>

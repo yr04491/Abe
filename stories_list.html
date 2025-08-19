@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>ぼくらのみち — 体験談一覧</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<body>
+<div id="common-header"></div>
+
+<main class="container">
+  <section class="page-header">
+    <h1 class="page-title">体験談一覧</h1>
+    <p class="page-description">不登校を経験した保護者や子どもたちの体験談を集めています。あなたの状況に合った体験談を見つけてみましょう。</p>
+  </section>
+
+  <div class="search-section">
+    <div class="search-box">
+      <input type="text" id="search-input" class="search-input" placeholder="キーワードで検索">
+      <button type="submit" id="search-button" class="search-button">検索</button>
+    </div>
+    
+    <div class="filter-options">
+      <div class="filter-group">
+        <h3>学年で絞り込む</h3>
+        <div class="filter-buttons">
+          <button class="filter-btn" data-filter="grade" data-value="primary">小学生</button>
+          <button class="filter-btn" data-filter="grade" data-value="junior">中学生</button>
+          <button class="filter-btn" data-filter="grade" data-value="high">高校生</button>
+        </div>
+      </div>
+      
+      <div class="filter-group">
+        <h3>きっかけで絞り込む</h3>
+        <div class="filter-buttons">
+          <button class="filter-btn" data-filter="tag" data-value="bullying">いじめ／友人関係</button>
+          <button class="filter-btn" data-filter="tag" data-value="study">勉強のつまずき</button>
+          <button class="filter-btn" data-filter="tag" data-value="development">発達特性・体調要因</button>
+          <button class="filter-btn" data-filter="tag" data-value="teacher">教師や学校との関係</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="story-list">
+    <!-- ここに記事一覧がJSで挿入されます -->
+    <div class="loading">記事を読み込んでいます...</div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 検索ボタンクリック時の処理
+      document.getElementById('search-button').addEventListener('click', function() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+          window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        }
+      });
+      
+      // Enterキーでも検索できるように
+      document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+
+      // フィルターボタンのクリックイベント
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const filterType = this.getAttribute('data-filter');
+          const filterValue = this.getAttribute('data-value');
+          
+          // 該当するページにリダイレクト
+          if (filterType === 'grade') {
+            window.location.href = `search.html?grade=${filterValue}`;
+          } else if (filterType === 'tag') {
+            window.location.href = `search.html?tag=${filterValue}`;
+          }
+        });
+      });
+      
+      // 記事一覧を表示
+      displayAllStories();
+    });
+
+    // すべての記事を表示する関数
+    async function displayAllStories() {
+      const stories = await loadStories();
+      const storyListContainer = document.getElementById('story-list');
+      
+      if (!storyListContainer) {
+        console.error('記事リスト表示用のコンテナが見つかりません');
+        return;
+      }
+      
+      storyListContainer.innerHTML = '';
+      
+      // 記事をソートして表示（新着順）
+      const sortedStories = [...stories].sort((a, b) => {
+        // 日付形式が "2021.3" のような形式の場合の処理
+        const datePartsA = a.created_date.split('.');
+        const datePartsB = b.created_date.split('.');
+        
+        const yearA = parseInt(datePartsA[0]);
+        const yearB = parseInt(datePartsB[0]);
+        
+        if (yearA !== yearB) return yearB - yearA;
+        
+        const monthA = parseInt(datePartsA[1]);
+        const monthB = parseInt(datePartsB[1]);
+        return monthB - monthA;
+      });
+      
+      if (sortedStories.length === 0) {
+        storyListContainer.innerHTML = '<p class="no-results">体験談が見つかりませんでした。</p>';
+        return;
+      }
+      
+      sortedStories.forEach(story => {
+        const storyItem = document.createElement('div');
+        storyItem.className = 'story-item';
+        
+        storyItem.innerHTML = `
+          <h3 class="story-title"><a href="post.html?id=${story.id}">${story.title}</a></h3>
+          <div class="story-meta">
+            <span class="story-date">記載日: ${story.created_date}</span>
+            <span class="story-grade">不登校時の学年: ${story.grade}</span>
+            <span class="story-family">家族構成: ${story.family}</span>
+          </div>
+          <div class="story-tags">
+            ${story.grade ? `<span class="story-tag">学年: ${story.grade}</span>` : ''}
+            ${story.content.trigger && story.content.trigger.includes('いじめ') ? `<span class="story-tag">きっかけ: いじめ</span>` : ''}
+            ${story.content.trigger && story.content.trigger.includes('勉強') ? `<span class="story-tag">きっかけ: 勉強</span>` : ''}
+            ${story.content.trigger && story.content.trigger.includes('教師') ? `<span class="story-tag">きっかけ: 教師</span>` : ''}
+            ${story.content.improvement && story.content.improvement.includes('改善') ? `<span class="story-tag">状況: 改善</span>` : ''}
+          </div>
+          <div class="story-excerpt">
+            ${story.content.trigger.substring(0, 150)}...
+          </div>
+          <a href="post.html?id=${story.id}" class="read-more-btn">続きを読む</a>
+        `;
+        
+        storyListContainer.appendChild(storyItem);
+      });
+    }
+  </script>
+</main>
+
+<div id="common-footer"></div>
+</body>
+</html>

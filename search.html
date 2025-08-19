@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang='ja'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>ぼくらのみち — 検索結果</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js"></script>
+<body>
+<div id="common-header"></div>
+
+<main class="container">
+  <div class="search-form">
+    <input type="text" id="search-input" class="search-input" placeholder="キーワードで検索">
+    <button type="submit" id="search-button" class="search-button">検索</button>
+  </div>
+  
+  <div class="search-results-header">
+    <h1 class="page-title">検索結果</h1>
+    <p>検索キーワード: <span id="search-term" class="search-keyword">「キーワード」</span></p>
+  </div>
+  
+  <div id="search-results">
+    <!-- ここに検索結果がJSで挿入されます -->
+  </div>
+
+  <script>
+    // 検索フォームの送信処理
+    document.addEventListener('DOMContentLoaded', function() {
+      // 検索ボタンクリック時の処理
+      document.getElementById('search-button').addEventListener('click', function() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+          window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        }
+      });
+      
+      // Enterキーでも検索できるように
+      document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+      
+      // URLパラメータから検索を実行
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      const tagFilter = urlParams.get('tag');
+      const statusFilter = urlParams.get('status');
+      
+      // 検索入力欄に検索キーワードをセット
+      if (query) {
+        document.getElementById('search-input').value = query;
+      }
+      
+      // 検索キーワードを表示
+      const searchTermElement = document.getElementById('search-term');
+      if (searchTermElement) {
+        if (query) {
+          searchTermElement.textContent = `「${query}」`;
+        } else if (tagFilter) {
+          let tagName = '';
+          switch(tagFilter) {
+            case 'bullying': tagName = 'いじめ／友人関係'; break;
+            case 'study': tagName = '勉強のつまずき'; break;
+            case 'development': tagName = '発達特性・体調要因'; break;
+            case 'teacher': tagName = '教師や学校との関係'; break;
+            case 'other': tagName = 'その他（進級・転校など）'; break;
+          }
+          searchTermElement.textContent = `タグ: 「${tagName}」`;
+        } else if (statusFilter) {
+          let statusName = '';
+          switch(statusFilter) {
+            case 'initial': statusName = '不登校初期（～1か月）'; break;
+            case 'half-year': statusName = '半年程度経過'; break;
+            case 'over-year': statusName = '1年以上経過'; break;
+            case 'improving': statusName = '徐々に改善してきた'; break;
+            case 'continuing': statusName = '今も続いている'; break;
+          }
+          searchTermElement.textContent = `状況: 「${statusName}」`;
+        }
+      }
+      
+      // 検索を実行して結果を表示
+      if (query || tagFilter || statusFilter) {
+        searchStories(query || '').then(results => {
+          displaySearchResults(results);
+        });
+      }
+    });
+  </script>
+</main>
+
+<div id="common-footer"></div>
+
+<script>
+  // ページロード時に検索結果を表示
+  document.addEventListener('DOMContentLoaded', function() {
+    displaySearchResults();
+    
+    // 検索フォームの送信処理
+    document.getElementById('search-button').addEventListener('click', function() {
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+      }
+    });
+    
+    // Enterキーでも検索できるように
+    document.getElementById('search-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+          window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
